@@ -1,7 +1,9 @@
-<h1>Lista de Músicas</h1>
-<!-- <table>
+<router-outlet></router-outlet>
+
+<!-- <h1>Lista de Músicas</h1>
+<table class="tabela">
   <tr>
-    <th>Código</th>
+    <th>Index</th>
     <th>Nome</th>
     <th>Álbum</th>
     <th>Cantor</th>
@@ -12,6 +14,7 @@
   </tr>
 
   <tr *ngFor="let musica of lista_musicas; let i = index">
+    <td>{{i}}</td>
     <td>{{musica.getNome()}}</td>
     <td>{{musica.getAlbum()}}</td>
     <td>{{musica.getCantor()}}</td>
@@ -31,18 +34,7 @@
     </td>
   </tr>
 </table>
- -->
-
-<table mat-table *ngFor="let musica of lista_musicas; let i = index">
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef>Nome</th>
-    <td mat-cell >{{musica.getNome()}}</td>
-  </ng-container> 
-  
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
+ 
 <hr>
 
 <div *ngIf="!edicao; else editarProduto">
@@ -52,7 +44,6 @@
 <ng-template #editarProduto>
   <h1>Editar música</h1>
 </ng-template>
-
 
   <mat-form-field appearance="fill" class="forminha">
     <mat-label for="nome">Nome:</mat-label>
@@ -116,3 +107,4 @@
   <br/>
   
 <button mat-raised-button (click)="salvar()">Salvar</button>
+ -->

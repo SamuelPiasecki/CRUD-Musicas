@@ -1,0 +1,102 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+<h1>Editar música da lista</h1>
+
+<form [formGroup]="formEditar" (ngSubmit)="submitForm()">
+<mat-form-field appearance="fill" class="forminha">
+    <mat-label for="nome">Nome:</mat-label>
+    <input matInput formControlName="nome" type="text" placeholder="Nome da música">
+    <div *ngIf="formEditar.controls['nome'].touched">
+        <small *ngIf="formEditar.controls['nome'].hasError('required')"
+        style="color : red"> O Nome é obrigatório!</small>
+    </div>
+  </mat-form-field>
+
+  <br/>
+
+  <mat-form-field appearence="fill" class="forminha">
+    <mat-label for="album">Álbum</mat-label>
+    <input matInput type="text" formControlName="album" placeholder="Nome do Álbum">
+    <div *ngIf="formEditar.controls['album'].touched">
+        <small *ngIf="formEditar.controls['album'].hasError('required')"
+        style="color : red"> O Álbum é obrigatório!</small>
+    </div>
+  </mat-form-field>
+
+  <br/>
+
+  <mat-form-field appearence="fill" class="forminha">
+    <mat-label for="cantor">Cantor</mat-label>
+    <input matInput type="text" formControlName="cantor" placeholder="Nome do Cantor">
+    <div *ngIf="formEditar.controls['cantor'].touched">
+        <small *ngIf="formEditar.controls['cantor'].hasError('required')"
+        style="color : red"> O Cantor é obrigatório!</small>
+    </div>
+  </mat-form-field>
+
+  <br/>
+
+  <mat-form-field appearence="fill" class="forminha">
+    <mat-label>Produtor</mat-label>
+    <input matInput formControlName="produtor" type="text" placeholder="Nome do Produtor">
+    <div *ngIf="formEditar.controls['produtor'].touched">
+      <small *ngIf="formEditar.controls['produtor'].hasError('required')"
+      style="color : red"> O Produtor é obrigatório!</small>
+  </div>
+  </mat-form-field>
+
+  <br/>
+
+<mat-form-field appearence="fill" class="forminha"> 
+  <mat-label>Ano de lançamento</mat-label>
+  <input type="number" matInput formControlName="ano" placeholder="Ano do lançamento">
+  <div *ngIf="formEditar.controls['ano'].touched">
+    <small *ngIf="formEditar.controls['ano'].hasError('required')"
+    style="color : red"> O Ano é obrigatório</small>
+    <small *ngIf="formEditar.controls['ano'].hasError('min')"
+    style="color : red">
+    O Ano de lançamento precisa ter no mínimo 4 caracteres</small>
+</div>
+</mat-form-field>
+
+<br/>
+
+<mat-form-field class="forminha">
+  <mat-label>Disponível em</mat-label>
+<select matNativeControl formControlName="disponivel">
+  <option>Youtube</option>
+  <option>Spotify</option>
+  <option>Deezer</option>
+  </select>
+  <div *ngIf="formEditar.controls['disponivel'].touched">
+    <small *ngIf="formEditar.controls['disponivel'].hasError('required')"
+    style="color : red"> A Plataforma é obrigatória!</small>
+</div>
+</mat-form-field>
+
+<br>
+
+  <mat-form-field class="forminha">
+    <mat-label>Gênero</mat-label>
+  <select matNativeControl formControlName="genero">
+    <option>Jazz</option>
+    <option>Rock</option>
+    <option>Funk</option>
+    <option>Pop</option>
+    <option>Rap</option>
+    <option>Sertanejo</option>
+    <option>Outros</option>
+  </select>
+  <div *ngIf="formEditar.controls['genero'].touched">
+    <small *ngIf="formEditar.controls['genero'].hasError('required')"
+    style="color : red"> O Gênero é obrigatório!</small>
+</div>
+  </mat-form-field>
+
+  <br/>
+  
+<button mat-raised-button type="submit">Salvar</button>
+</form>
+
