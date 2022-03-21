@@ -13,6 +13,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { ListaDeMusicasComponent } from './components/lista-de-musicas/lista-de-musicas.component';
 import { CriarMusicasComponent } from './components/criar-musicas/criar-musicas.component';
 import { EditarMusicasComponent } from './components/editar-musicas/editar-musicas.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,11 @@ import { EditarMusicasComponent } from './components/editar-musicas/editar-music
     MatSelectModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

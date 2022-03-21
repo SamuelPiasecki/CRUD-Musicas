@@ -1,11 +1,13 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+  rel="stylesheet"
+/>
 
-<h1>Lista  de  Músicas</h1>
+<h1>Lista de Músicas</h1>
 <table class="tabela">
   <tr>
-    <th>Index</th>
     <th>Nome</th>
     <th>Álbum</th>
     <th>Cantor</th>
@@ -15,26 +17,27 @@
     <th>Disponível em</th>
   </tr>
 
-  <tr *ngFor="let musica of lista_musicas; let i = index">
-    <td>{{i}}</td>
-    <td>{{musica.getNome()}}</td>
-    <td>{{musica.getAlbum()}}</td>
-    <td>{{musica.getCantor()}}</td>
-    <td>{{musica.getProdutor()}}</td>
-    <td>{{musica.getGenero()}}</td>
-    <td>{{musica.getAno()}}</td>
-    <td>{{musica.getDisponivel()}}</td>
+  <tr *ngFor="let musica of lista_musicas">
+    <td>{{ musica.nome }}</td>
+    <td>{{ musica.album }}</td>
+    <td>{{ musica.cantor }}</td>
+    <td>{{ musica.produtor }}</td>
+    <td>{{ musica.genero }}</td>
+    <td>{{ musica.ano }}</td>
+    <td>{{ musica.disponivel }}</td>
     <td>
-      <button mat-icon-button (click)="excluir(i)">
+      <button mat-icon-button (click)="excluir(musica)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
     <td>
-      <button mat-icon-button (click)="editar(i)" >
+      <button mat-icon-button (click)="editar(musica)">
         <mat-icon>create</mat-icon>
       </button>
     </td>
   </tr>
 </table>
 
-<button mat-raised-button (click)="irParaCriarMusica()" id="botao"  >Criar Musica</button>
+<button mat-raised-button (click)="irParaCriarMusica()" id="botao">
+  Criar Musica
+</button>
