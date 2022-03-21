@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Musica } from 'src/app/models/musica';
-import { MusicasService } from 'src/app/services/musicas.service';
+import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
 
 @Component({
   selector: 'app-lista-de-musicas',
@@ -10,31 +10,36 @@ import { MusicasService } from 'src/app/services/musicas.service';
 })
 export class ListaDeMusicasComponent implements OnInit {
 
-  lista_musicas:Musica[] = []
+  lista_musicas: Musica[] = []
 
-  constructor(private _router:Router, private _musicaService:MusicasService) { }
+  constructor(private _router: Router, private _musicaService: MusicaFirebaseService) { }
 
   ngOnInit(): void {
-    this.lista_musicas = this._musicaService.getMusicas()
+    this._musicaService.getMusicas()
+      .subscribe(res => {
+        this.lista_musicas = res.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data() as Musica
+          } as Musica
+        })
+      })
   }
 
-  public excluir(index:number):void{
-    let resultado = confirm("Deseja excluir a Música da Lista: " + this._musicaService.getMusica(index).getNome() + "?")
-    if(resultado){
-      if(this._musicaService.excluirMusica(index)){
-        alert("Música excluída com Sucesso!")
-      }else{
-        alert("Música não pode ser excluída.")
-      }
-
+  public excluir(musica: Musica): void {
+    let resultado = confirm("Deseja excluir a Música da Lista: " + musica.nome + "?")
+    if (resultado) {
+      this._musicaService.deletarMusica(musica)
+        .then(() => { alert("Música excluída da lista") })
+        .catch(() => { alert("Erro ao excluir música!") })
     }
   }
 
-  public editar(index:number):void{
-    this._router.navigate(['/editarMusica', index])
+  public editar(musica: Musica): void {
+    this._router.navigate(['/editarMusica', musica.id])
   }
 
-  public irParaCriarMusica():void{
+  public irParaCriarMusica(): void {
     this._router.navigate(['/criarMusica'])
   }
 

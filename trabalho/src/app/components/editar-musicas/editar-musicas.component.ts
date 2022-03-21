@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Musica } from 'src/app/models/musica';
-import { MusicasService } from 'src/app/services/musicas.service';
+import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
+
 
 @Component({
   selector: 'app-editar-musicas',
@@ -12,12 +12,12 @@ import { MusicasService } from 'src/app/services/musicas.service';
 export class EditarMusicasComponent implements OnInit {
 
   public formEditar: FormGroup
-  private index : number = -1
+  private id: any
 
   constructor(
     private _router: Router,
     private _actRoute: ActivatedRoute,
-    private _musicaService: MusicasService,
+    private _musicaService: MusicaFirebaseService,
     private _formBuilder: FormBuilder
   ) {
     this.formEditar = this._formBuilder.group({
@@ -34,19 +34,22 @@ export class EditarMusicasComponent implements OnInit {
   ngOnInit(): void {
     this._actRoute.params.subscribe((parametros) => {
       if (parametros["index"]) {
-        this.index = parametros["index"];
-        let musica = this._musicaService.getMusica(this.index);
-        this.formEditar = this._formBuilder.group({
-          nome: [musica.getNome(), [Validators.required]],
-          album: [musica.getAlbum(), [Validators.required]],
-          cantor: [musica.getCantor(), [Validators.required]],
-          produtor: [musica.getProdutor(), [Validators.required]],
-          ano: [musica.getAno(), [Validators.required, Validators.min(1000)]],
-          disponivel: [musica.getDisponivel(), [Validators.required]],
-          genero: [musica.getGenero(), [Validators.required]],
-        });
+        this.id = parametros["index"]
+        this._musicaService.getMusica(parametros["index"])
+          .subscribe(res => {
+            let musicaRef: any = res;
+            this.formEditar = this._formBuilder.group({
+              nome: [musicaRef.nome, [Validators.required]],
+              album: [musicaRef.album, [Validators.required]],
+              cantor: [musicaRef.cantor, [Validators.required]],
+              produtor: [musicaRef.produtor, [Validators.required]],
+              ano: [musicaRef.ano, [Validators.required, Validators.min(1000)]],
+              disponivel: [musicaRef.disponivel, [Validators.required]],
+              genero: [musicaRef.genero, [Validators.required]],
+            })
+          })
       }
-    });
+    })
   }
 
   private validarFormulario() {
@@ -64,22 +67,16 @@ export class EditarMusicasComponent implements OnInit {
     }
   }
 
-  public salvar(): void {   
-      let musica = new Musica(
-          this.formEditar.controls['nome'].value,
-          this.formEditar.controls['album'].value,
-          this.formEditar.controls['cantor'].value,
-          this.formEditar.controls['produtor'].value,
-          this.formEditar.controls['ano'].value,
-          this.formEditar.controls['disponivel'].value,
-          this.formEditar.controls['genero'].value
-        )
-      if(this._musicaService.editarMusica(this.index, musica)){
-        alert('Música editada!')
-        this._router.navigate(['/listaDeMusica'])
-    } else {
-      alert('Erro ao salvar a música');
-    }
+  public salvar(): void {
+    this._musicaService.editarMusica(this.formEditar.value, this.id)
+      .then(() => {
+        alert("Música editada com sucesso!")
+        this._router.navigate(["/listaDeMusica"])
+      })
+      .catch(() => {
+        console.log()
+        alert("Música não pode ser editada")
+      })
   }
 
 }

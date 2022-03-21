@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Musica } from 'src/app/models/musica';
-import { MusicasService } from 'src/app/services/musicas.service';
+import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
 
 @Component({
   selector: 'app-criar-musicas',
@@ -10,11 +10,12 @@ import { MusicasService } from 'src/app/services/musicas.service';
   styleUrls: ['./criar-musicas.component.scss'],
 })
 export class CriarMusicasComponent implements OnInit {
+
   public formAdicionar: FormGroup;
 
   constructor(
     private _router: Router,
-    private _musicaService: MusicasService,
+    private _musicaService: MusicaFirebaseService,
     private _formBuilder: FormBuilder
   ) {
     this.formAdicionar = this._formBuilder.group({
@@ -28,7 +29,7 @@ export class CriarMusicasComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   private validarFormulario() {
     for (let campos in this.formAdicionar.controls) {
@@ -46,23 +47,14 @@ export class CriarMusicasComponent implements OnInit {
   }
 
   public salvar(): void {
-    if (
-      this._musicaService.inserirMusica(
-        new Musica(
-          this.formAdicionar.controls['nome'].value,
-          this.formAdicionar.controls['album'].value,
-          this.formAdicionar.controls['cantor'].value,
-          this.formAdicionar.controls['produtor'].value,
-          this.formAdicionar.controls['ano'].value,
-          this.formAdicionar.controls['disponivel'].value,
-          this.formAdicionar.controls['genero'].value
-        )
-      )
-    ) {
-      alert('Música adicionada a lista');
-      this._router.navigate(['/listaDeMusica']);
-    } else {
-      alert('Erro ao salvar a música');
-    }
+    this._musicaService
+      .criarMusica(this.formAdicionar.value)
+      .then(() => {
+        alert("Música adicionada a lista!")
+        this._router.navigate(['/listaDeMusica'])
+      })
+      .catch(() => {
+        alert("Erro ao salvar a música na lista")
+      })
   }
 }
