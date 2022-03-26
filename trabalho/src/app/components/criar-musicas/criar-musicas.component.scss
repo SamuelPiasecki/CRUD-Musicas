@@ -1,19 +1,31 @@
-h1{
-    padding-top: 3%;
-    padding-left: 3%;
-    text-align: left;
-    font-family: 'Monoton', cursive;
-    padding-bottom: 3%;
-    font-size: 30px;  
-    background-color: rgb(168, 29, 29);
+body {
+  background-color: rgb(78, 111, 157);
 }
 
-.forminha{
-    width: 20%;
-    margin: 0.5%;
-    margin-left: 2%;
+h1 {
+  padding-top: 3%;
+  padding-left: 3%;
+  text-align: left;
+  font-family: "Monoton", cursive;
+  padding-bottom: 3%;
+  font-size: 30px;
+  color: white;
+  background-color: rgb(63, 97, 144);
+  background-image: url("/assets/icon-app.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 95%;
+  size: 20%;
 }
 
-button{
-    left: 15%;
+.forminha {
+  width: 20%;
+  margin: 0.2%;
+  margin-left: 2%;
+}
+
+button {
+  left: 15%;
+  background-color: rgb(147, 172, 206);
+  color: white;
 }

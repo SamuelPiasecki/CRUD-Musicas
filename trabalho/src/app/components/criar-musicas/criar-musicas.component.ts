@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Musica } from 'src/app/models/musica';
 import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class CriarMusicasComponent implements OnInit {
   constructor(
     private _router: Router,
     private _musicaService: MusicaFirebaseService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
   ) {
     this.formAdicionar = this._formBuilder.group({
       nome: ['', [Validators.required]],
@@ -50,11 +51,15 @@ export class CriarMusicasComponent implements OnInit {
     this._musicaService
       .criarMusica(this.formAdicionar.value)
       .then(() => {
-        alert("Música adicionada a lista!")
+        this._snackBar.open("Música adicionada!", "Ok", {
+          panelClass: ['blue-snackbar']
+        })
         this._router.navigate(['/listaDeMusica'])
       })
       .catch(() => {
-        alert("Erro ao salvar a música na lista")
+        this._snackBar.open("Erro ao salvar a música", "Ok", {
+          panelClass: ['blue-snackbar']
+        })
       })
   }
 }

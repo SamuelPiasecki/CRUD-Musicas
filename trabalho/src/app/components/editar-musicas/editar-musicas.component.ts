@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
-
 
 @Component({
   selector: 'app-editar-musicas',
@@ -18,7 +18,8 @@ export class EditarMusicasComponent implements OnInit {
     private _router: Router,
     private _actRoute: ActivatedRoute,
     private _musicaService: MusicaFirebaseService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {
     this.formEditar = this._formBuilder.group({
       nome: ['', [Validators.required]],
@@ -70,12 +71,18 @@ export class EditarMusicasComponent implements OnInit {
   public salvar(): void {
     this._musicaService.editarMusica(this.formEditar.value, this.id)
       .then(() => {
-        alert("Música editada com sucesso!")
+        this._snackBar.open("Música editada!!", "Ok", {
+          panelClass: ['blue-snackbar']
+        })
+        //alert("Música editada com sucesso!")
         this._router.navigate(["/listaDeMusica"])
       })
       .catch(() => {
         console.log()
-        alert("Música não pode ser editada")
+        //alert("Música não pode ser editada")
+        this._snackBar.open("Música não pode ser editada", "Ok", {
+          panelClass: ['blue-snackbar']
+        })
       })
   }
 

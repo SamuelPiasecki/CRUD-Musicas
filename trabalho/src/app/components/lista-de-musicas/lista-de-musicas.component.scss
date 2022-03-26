@@ -1,31 +1,54 @@
-h1{
-    padding-top: 3%;
-    text-align: center;
-    font-family: 'Monoton', cursive;
-    padding-bottom: 3%;
-    font-size: 50px;
-   background-color: rgb(168, 29, 29);
+body {
+  background-color: rgb(78, 111, 157);
+  background-image: url("/assets/icon-app.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+h1 {
+  padding-top: 3%;
+  text-align: center;
+  font-family: "Monoton", cursive;
+  padding-bottom: 3%;
+  font-size: 50px;
+  color: white;
+  background-color: rgb(63, 97, 144);
+}
+
+.cards {
+  color: white;
+  max-width: 400px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  margin: 4px;
+  float: left;
+  background-color: rgb(147, 172, 206);
 }
 
 .forminha {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-
-.tabela{
+  min-width: 150px;
+  max-width: 500px;
   width: 100%;
 }
-  
-td{
+
+.tabela {
+  width: 100%;
+}
+
+td {
   text-align: center;
 }
 
-th{
+th {
   text-align: center;
 }
 
-#botao{
-   margin-top: 3%;
-   left: 80%;
+#botao {
+  position: absolute;
+  left: 90%;
+  top: 5%;
+  width: 120px;
+  background-color: rgb(147, 172, 206);
+  color: white;
 }
