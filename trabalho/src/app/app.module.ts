@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { ListaDeMusicasComponent } from './components/lista-de-musicas/lista-de-musicas.component';
 import { CriarMusicasComponent } from './components/criar-musicas/criar-musicas.component';
@@ -18,13 +17,19 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from 'src/environments/environment';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogConfirmComponent } from './components/lista-de-musicas/dialog-confirm/dialog-confirm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaDeMusicasComponent,
     CriarMusicasComponent,
-    EditarMusicasComponent
+    EditarMusicasComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -35,12 +40,15 @@ import { environment } from 'src/environments/environment';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatTableModule,
     MatIconModule,
+    MatDividerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

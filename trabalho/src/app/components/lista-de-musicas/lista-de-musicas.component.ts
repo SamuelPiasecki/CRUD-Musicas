@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Musica } from 'src/app/models/musica';
 import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-lista-de-musicas',
@@ -12,7 +15,10 @@ export class ListaDeMusicasComponent implements OnInit {
 
   lista_musicas: Musica[] = []
 
-  constructor(private _router: Router, private _musicaService: MusicaFirebaseService) { }
+  constructor(private _router: Router,
+    private _musicaService: MusicaFirebaseService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this._musicaService.getMusicas()
@@ -27,12 +33,25 @@ export class ListaDeMusicasComponent implements OnInit {
   }
 
   public excluir(musica: Musica): void {
-    let resultado = confirm("Deseja excluir a Música da Lista: " + musica.nome + "?")
-    if (resultado) {
-      this._musicaService.deletarMusica(musica)
-        .then(() => { alert("Música excluída da lista") })
-        .catch(() => { alert("Erro ao excluir música!") })
-    }
+    let dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '250px',
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._musicaService.deletarMusica(musica)
+          .then(() => {
+            this._snackBar.open("Música excluída da lista", "Ok", {
+              panelClass: ['blue-snackbar']
+            })
+          })
+          .catch(() => {
+            this._snackBar.open("Erro ao excluir música!", "Ok", {
+              panelClass: ['blue-snack']
+            })
+          })
+      }
+    })
   }
 
   public editar(musica: Musica): void {

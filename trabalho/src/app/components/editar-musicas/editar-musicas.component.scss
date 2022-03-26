@@ -1,3 +1,6 @@
+body{
+    background-color: rgb(78, 111, 157);
+}
 h1{
     padding-top: 3%;
     padding-left: 3%;
@@ -5,15 +8,18 @@ h1{
     font-family: 'Monoton', cursive;
     padding-bottom: 3%;
     font-size: 30px; 
-    background-color: rgb(168, 29, 29); 
+    color: white;
+    background-color: rgb(63, 97, 144);
 }
 
 .forminha{
     width: 20%;
-    margin: 0.5%;
+    margin: 0.2%;
     margin-left: 2%;
 }
 
 button{
     left: 15%;
+    background-color: rgb(147, 172, 206);
+    color: white;
 }
