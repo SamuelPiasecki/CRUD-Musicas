@@ -1,0 +1,82 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+  rel="stylesheet"
+/>
+<body>
+  <h1>Cadastro</h1>
+  <form [formGroup]="formSignUp" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline" class="signUp">
+      <mat-label>Email:</mat-label>
+      <input matInput type="text" formControlName="email" /><br />
+      <div *ngIf="formSignUp.controls['email'].touched">
+        <small
+          *ngIf="formSignUp.controls['email'].hasError('required')"
+          style="color: rgb(114, 17, 17)"
+        >
+          O email é obrigatório</small
+        >
+        <small
+          *ngIf="formSignUp.controls['email'].hasError('email')"
+          style="color: rgb(114, 17, 17)"
+        >
+          Email inválido</small
+        >
+      </div>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field appearance="outline" class="signUp">
+      <mat-label>Senha:</mat-label>
+      <input matInput type="password" formControlName="password" /><br />
+      <div *ngIf="formSignUp.controls['password'].touched">
+        <small
+          *ngIf="formSignUp.controls['password'].hasError('required')"
+          style="color: rgb(114, 17, 17)"
+          >Senha é obrigatório</small
+        >
+      </div>
+      <div *ngIf="formSignUp.controls['password'].touched">
+        <small
+          *ngIf="formSignUp.controls['password'].hasError('minlength')"
+          style="color: rgb(114, 17, 17)"
+          >Mínimo de 6 caracteres</small
+        >
+      </div>
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field appearance="outline" class="signUp">
+      <mat-label>Confirmar Senha:</mat-label>
+      <input matInput type="password" formControlName="confirmPassword" /><br />
+      <div *ngIf="formSignUp.controls['confirmPassword'].touched">
+        <small
+          *ngIf="formSignUp.controls['confirmPassword'].hasError('required')"
+          style="color: rgb(114, 17, 17)"
+          >Senha é obrigatório</small
+        >
+      </div>
+      <div *ngIf="formSignUp.controls['confirmPassword'].touched">
+        <small
+          *ngIf="formSignUp.controls['confirmPassword'].hasError('minlength')"
+          style="color: rgb(114, 17, 17)"
+          >Mínimo de 6 caracteres</small
+        >
+      </div>
+      <small
+        *ngIf="
+          formSignUp.controls['confirmPassword'].value !=
+          formSignUp.controls['password'].value
+        "
+        style="color: rgb(114, 17, 17)"
+        >Senhas não conferem</small
+      >
+    </mat-form-field>
+
+    <br/>
+    <button mat-raised-button type="submit">Cadastrar</button>
+  </form>
+</body>

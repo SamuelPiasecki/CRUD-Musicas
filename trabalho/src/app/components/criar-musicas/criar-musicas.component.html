@@ -1,11 +1,10 @@
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
-    rel="stylesheet"
-  />
-  <body>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+  rel="stylesheet"
+/>
+<body>
   <h1>Criar música</h1>
 
   <form [formGroup]="formAdicionar" (ngSubmit)="submitForm()">
@@ -20,14 +19,12 @@
       <div *ngIf="formAdicionar.controls['nome'].touched">
         <small
           *ngIf="formAdicionar.controls['nome'].hasError('required')"
-          style="color: rgb(163, 22, 22)"
+          style="color: rgb(114, 17, 17)"
         >
           O Nome é obrigatório!</small
         >
       </div>
     </mat-form-field>
-
-    <br />
 
     <mat-form-field appearance="outline" class="forminha">
       <mat-label for="album">Álbum</mat-label>
@@ -40,7 +37,7 @@
       <div *ngIf="formAdicionar.controls['album'].touched">
         <small
           *ngIf="formAdicionar.controls['album'].hasError('required')"
-          style="color: rgb(163, 22, 22)"
+          style="color: rgb(114, 17, 17)"
         >
           O Álbum é obrigatório!</small
         >
@@ -60,14 +57,12 @@
       <div *ngIf="formAdicionar.controls['cantor'].touched">
         <small
           *ngIf="formAdicionar.controls['cantor'].hasError('required')"
-          style="color: rgb(163, 22, 22)"
+          style="color: rgb(114, 17, 17)"
         >
           O Cantor é obrigatório!</small
         >
       </div>
     </mat-form-field>
-
-    <br />
 
     <mat-form-field appearance="outline" class="forminha">
       <mat-label>Produtor</mat-label>
@@ -80,7 +75,7 @@
       <div *ngIf="formAdicionar.controls['produtor'].touched">
         <small
           *ngIf="formAdicionar.controls['produtor'].hasError('required')"
-          style="color: rgb(163, 22, 22)"
+          style="color: rgb(114, 17, 17)"
         >
           O Produtor é obrigatório!</small
         >
@@ -100,20 +95,18 @@
       <div *ngIf="formAdicionar.controls['ano'].touched">
         <small
           *ngIf="formAdicionar.controls['ano'].hasError('required')"
-          style="color: rgb(163, 22, 22)"
+          style="color: rgb(114, 17, 17)"
         >
           O Ano é obrigatório</small
         >
         <small
           *ngIf="formAdicionar.controls['ano'].hasError('min')"
-          style="color: rgb(163, 22, 22)"
+          style="color: rgb(114, 17, 17)"
         >
           O Ano de lançamento precisa ter no mínimo 4 caracteres</small
         >
       </div>
     </mat-form-field>
-
-    <br />
 
     <mat-form-field appearance="outline" class="forminha">
       <mat-label>Disponível em</mat-label>
@@ -139,8 +132,6 @@
       </select>
     </mat-form-field>
 
-    <br />
-
-    <button mat-raised-button type="submit">Salvar</button>
+    <button mat-raised-button type="submit" id="butao">Salvar</button>
   </form>
 </body>

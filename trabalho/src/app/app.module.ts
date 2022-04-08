@@ -22,6 +22,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogConfirmComponent } from './components/lista-de-musicas/dialog-confirm/dialog-confirm.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DialogConfirmComponent } from './components/lista-de-musicas/dialog-con
     ListaDeMusicasComponent,
     CriarMusicasComponent,
     EditarMusicasComponent,
-    DialogConfirmComponent
+    DialogConfirmComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ import { DialogConfirmComponent } from './components/lista-de-musicas/dialog-con
     AngularFireAuthModule,
     MatCardModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
