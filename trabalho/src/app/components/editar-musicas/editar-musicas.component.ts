@@ -49,7 +49,7 @@ export class EditarMusicasComponent implements OnInit {
               genero: [musicaRef.genero, [Validators.required]],
             })
           })
-      } 
+      }
     })
   }
 
@@ -71,15 +71,14 @@ export class EditarMusicasComponent implements OnInit {
   public salvar(): void {
     this._musicaService.editarMusica(this.formEditar.value, this.id)
       .then(() => {
-        this._snackBar.open("Música editada!!", "Ok", {
+        this._snackBar.open("Música editada!!", "", {
+          duration: 1000,
           panelClass: ['blue-snackbar']
         })
-        //alert("Música editada com sucesso!")
         this._router.navigate(["/listaDeMusica"])
       })
       .catch(() => {
         console.log()
-        //alert("Música não pode ser editada")
         this._snackBar.open("Música não pode ser editada", "Ok", {
           panelClass: ['blue-snackbar']
         })
