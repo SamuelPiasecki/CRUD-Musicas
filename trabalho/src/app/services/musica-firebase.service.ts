@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
-import { MatPaginatorDefaultOptions } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
-import { map, finalize } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 import { Musica } from '../models/musica';
 
 @Injectable({
@@ -16,7 +15,6 @@ export class MusicaFirebaseService {
   uploadedFileUrl?: Observable<string>
   fileName?: string
   downloadURL?: string
-
 
   constructor(private angularFire: AngularFirestore, private storage: AngularFireStorage) { }
 
@@ -71,8 +69,6 @@ export class MusicaFirebaseService {
         genero: musica.genero,
         ano: musica.ano,
         disponivel: musica.disponivel,
-        imageName: this.fileName,
-        downloadURL: this.downloadURL
       })
   }
 

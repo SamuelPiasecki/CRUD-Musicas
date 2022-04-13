@@ -53,13 +53,13 @@ export class CriarMusicasComponent implements OnInit {
     const file: File = (target.files as FileList)[0]
     if (file.type.split('/')[0] != 'image') {
       this._snackBar.open("Tipo de arquivo não suportado", "Ok")
-      console.log("Tipo Não Suportado!")
       return
     } else {
       this._musicaService
         .uploadStorage(file, this.formAdicionar.value)
         .then(() => {
-          this._snackBar.open("Música adicionada!", "Ok", {
+          this._snackBar.open("Música adicionada!", "", {
+            duration: 1000,
             panelClass: ['blue-snackbar']
           })
           this._router.navigate(['/listaDeMusica'])

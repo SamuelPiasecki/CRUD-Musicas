@@ -68,19 +68,9 @@ export class ListaDeMusicasComponent implements OnInit {
   }
 
   public logout() {
-    /* let resultado = confirm("Vai sai?");
-    if (resultado) {
-      this.userService.logout()
-        .then(() => {
-          this._router.navigate(['/login'])
-        })
-        .catch(() => {
-          alert("Deu errado")
-        })
-    } */
-    let resultado = this.dialog.open(LogoutConfirmComponent, {width: '250px'})
+    let resultado = this.dialog.open(LogoutConfirmComponent, { width: '250px' })
 
-    resultado.afterClosed().subscribe(result =>{
+    resultado.afterClosed().subscribe(result => {
       if (result) {
         this.userService.logout()
           .then(() => {

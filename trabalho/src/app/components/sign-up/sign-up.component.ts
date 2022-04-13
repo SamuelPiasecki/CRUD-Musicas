@@ -46,15 +46,17 @@ export class SignUpComponent implements OnInit {
       this.userService.cadastrarComEmailPassword(this.formSignUp.controls['email'].value,
         this.formSignUp.controls['password'].value)
         .then(() => {
-          this.snackBar.open("Cadastro efetuado com sucesso!")
+          this.snackBar.open("Cadastro efetuado com sucesso!", "", {
+            duration: 1000
+          })
           this._router.navigate(['/listaDeMusica'])
         })
         .catch((error) => {
-          this.snackBar.open("Erro ao efetuar cadastro, tente novamente!")
+          this.snackBar.open("Erro ao efetuar cadastro, tente novamente!", "Ok")
           console.log(error)
         })
     } else {
-      this.snackBar.open("As senhas não conferem")
+      this.snackBar.open("As senhas não conferem", "Ok")
     }
   }
 

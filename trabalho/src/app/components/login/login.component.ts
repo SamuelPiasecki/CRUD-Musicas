@@ -44,11 +44,15 @@ export class LoginComponent implements OnInit {
     this.userService.loginComEmailPassword(this.formLogin.controls['email'].value,
       this.formLogin.controls['password'].value)
       .then(() => {
-        this.snackBar.open("Login efetuado com sucesso!")
+        this.snackBar.open("Login efetuado com sucesso!", "", {
+          duration: 1000
+        })
         this._router.navigate(['/listaDeMusica'])
       })
       .catch((error) => {
-        this.snackBar.open("Erro ao efetuar login, tente novamente")
+        this.snackBar.open("Erro ao efetuar login, tente novamente", "", {
+          duration: 1000
+        })
         console.log(error)
       })
   }
@@ -60,7 +64,7 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['/listaDeMusica'])
       })
       .catch((error) => {
-        this.snackBar.open("Erro ao efetuar login, tente novamente", )
+        this.snackBar.open("Erro ao efetuar login, tente novamente", "Ok")
         console.log(error)
       })
   }
