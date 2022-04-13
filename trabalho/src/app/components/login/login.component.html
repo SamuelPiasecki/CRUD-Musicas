@@ -1,60 +1,53 @@
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
-  rel="stylesheet"
-/>
-<body>
-  <h1>Login</h1>
-  <form [formGroup]="formLogin" (ngSubmit)="submitForm()">
-    <mat-form-field appearance="outline" class="login">
-      <mat-label>Email:</mat-label>
-      <input matInput type="text" formControlName="email" /><br />
-      <div *ngIf="formLogin.controls['email'].touched">
-        <small
-          *ngIf="formLogin.controls['email'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O email é obrigatório</small
-        >
-        <small
-          *ngIf="formLogin.controls['email'].hasError('email')"
-          style="color: rgb(114, 17, 17)"
-        >
-          Email inválido</small
-        >
-      </div>
-    </mat-form-field>
+<h1>Login</h1>
+<form [formGroup]="formLogin" (ngSubmit)="submitForm()">
+  <mat-form-field appearance="outline" class="login">
+    <mat-label>Email:</mat-label>
+    <input matInput type="text" formControlName="email" /><br />
+    <div *ngIf="formLogin.controls['email'].touched">
+      <small
+        *ngIf="formLogin.controls['email'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O email é obrigatório</small
+      >
+      <small
+        *ngIf="formLogin.controls['email'].hasError('email')"
+        style="color: rgb(114, 17, 17)"
+      >
+        Email inválido</small
+      >
+    </div>
+  </mat-form-field>
 
-    <br />
-
-    <mat-form-field appearance="outline" class="login">
-      <mat-label>Senha:</mat-label>
-      <input matInput type="password" formControlName="password" /><br />
-      <div *ngIf="formLogin.controls['password'].touched">
-        <small
-          *ngIf="formLogin.controls['password'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-          >Senha é obrigatório</small
-        >
-      </div>
-      <div *ngIf="formLogin.controls['password'].touched">
-        <small
-          *ngIf="formLogin.controls['password'].hasError('minlength')"
-          style="color: rgb(114, 17, 17)"
-          >A senha deve ter no mínimo de 6 caracteres</small
-        >
-      </div>
-    </mat-form-field>
-
-    <br />
-
-    <button mat-raised-button type="submit" class="loginho">Login</button>
-  </form>
-
-  <button mat-stroked-button (click)="logarComGoogleAccount()" id="google">
-    <img src="/assets/google.png" width="25" height="25" /> Cadastro com Google Account
-  </button>
   <br />
-  <a routerLink="/signUp" id="clica">Não tem Cadastro? Clica aqui!</a>
-</body>
+
+  <mat-form-field appearance="outline" class="login">
+    <mat-label>Senha:</mat-label>
+    <input matInput type="password" formControlName="password" /><br />
+    <div *ngIf="formLogin.controls['password'].touched">
+      <small
+        *ngIf="formLogin.controls['password'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+        >Senha é obrigatório</small
+      >
+    </div>
+    <div *ngIf="formLogin.controls['password'].touched">
+      <small
+        *ngIf="formLogin.controls['password'].hasError('minlength')"
+        style="color: rgb(114, 17, 17)"
+        >A senha deve ter no mínimo de 6 caracteres</small
+      >
+    </div>
+  </mat-form-field>
+
+  <br />
+
+  <button mat-raised-button type="submit" class="loginho">Login</button>
+</form>
+
+<button mat-stroked-button (click)="logarComGoogleAccount()" id="google">
+  <img src="/assets/google.png" width="25" height="25" /> Cadastro com Google
+  Account
+</button>
+<br />
+<a routerLink="/signUp" id="clica">Não tem Cadastro? Clica aqui!</a>

@@ -4,7 +4,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Musica } from 'src/app/models/musica';
 import { MusicaFirebaseService } from 'src/app/services/musica-firebase.service';
+import { UserService } from 'src/app/services/user.service';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { LogoutConfirmComponent } from './logout-confirm/logout-confirm.component';
 
 @Component({
   selector: 'app-lista-de-musicas',
@@ -18,7 +20,8 @@ export class ListaDeMusicasComponent implements OnInit {
   constructor(private _router: Router,
     private _musicaService: MusicaFirebaseService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this._musicaService.getMusicas()
@@ -41,12 +44,14 @@ export class ListaDeMusicasComponent implements OnInit {
       if (result) {
         this._musicaService.deletarMusica(musica)
           .then(() => {
-            this._snackBar.open("Música excluída da lista", "Ok", {
+            this._snackBar.open("Música excluída da lista", "", {
+              duration: 1000,
               panelClass: ['blue-snackbar']
             })
           })
           .catch(() => {
-            this._snackBar.open("Erro ao excluir música!", "Ok", {
+            this._snackBar.open("Erro ao excluir música!", "", {
+              duration: 1000,
               panelClass: ['blue-snack']
             })
           })
@@ -60,6 +65,32 @@ export class ListaDeMusicasComponent implements OnInit {
 
   public irParaCriarMusica(): void {
     this._router.navigate(['/criarMusica'])
+  }
+
+  public logout() {
+    /* let resultado = confirm("Vai sai?");
+    if (resultado) {
+      this.userService.logout()
+        .then(() => {
+          this._router.navigate(['/login'])
+        })
+        .catch(() => {
+          alert("Deu errado")
+        })
+    } */
+    let resultado = this.dialog.open(LogoutConfirmComponent, {width: '250px'})
+
+    resultado.afterClosed().subscribe(result =>{
+      if (result) {
+        this.userService.logout()
+          .then(() => {
+            this._router.navigate(['/login'])
+          })
+          .catch(() => {
+            alert("Deu errado")
+          })
+      }
+    })
   }
 
 }

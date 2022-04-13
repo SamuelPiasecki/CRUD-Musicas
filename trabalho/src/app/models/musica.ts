@@ -5,11 +5,13 @@ export class Musica {
     cantor:string
     produtor:string
     genero:string
-    ano:number
+    ano:string
     disponivel:string
+    imageName?:string
+    downloadURL?:string
 
     constructor(nome:string, album:string, cantor:string, produtor:string,
-        genero:string, ano:number, disponivel:string){
+        genero:string, ano:string, disponivel:string){
             this.nome = nome
             this.album = album
             this.cantor = cantor

@@ -1,137 +1,138 @@
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
-  rel="stylesheet"
-/>
-<body>
-  <h1>Criar música</h1>
+<h1>Criar música</h1>
 
-  <form [formGroup]="formAdicionar" (ngSubmit)="submitForm()">
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label for="nome">Nome:</mat-label>
-      <input
-        matInput
-        formControlName="nome"
-        type="text"
-        placeholder="Nome da música"
-      />
-      <div *ngIf="formAdicionar.controls['nome'].touched">
-        <small
-          *ngIf="formAdicionar.controls['nome'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O Nome é obrigatório!</small
-        >
-      </div>
-    </mat-form-field>
+<form [formGroup]="formAdicionar" (ngSubmit)="submitForm()">
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label for="nome">Nome:</mat-label>
+    <input
+      matInput
+      formControlName="nome"
+      type="text"
+      placeholder="Nome da música"
+    />
+    <div *ngIf="formAdicionar.controls['nome'].touched">
+      <small
+        *ngIf="formAdicionar.controls['nome'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O Nome é obrigatório!</small
+      >
+    </div>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label for="album">Álbum</mat-label>
-      <input
-        matInput
-        type="text"
-        formControlName="album"
-        placeholder="Nome do Álbum"
-      />
-      <div *ngIf="formAdicionar.controls['album'].touched">
-        <small
-          *ngIf="formAdicionar.controls['album'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O Álbum é obrigatório!</small
-        >
-      </div>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label for="album">Álbum</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="album"
+      placeholder="Nome do Álbum"
+    />
+    <div *ngIf="formAdicionar.controls['album'].touched">
+      <small
+        *ngIf="formAdicionar.controls['album'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O Álbum é obrigatório!</small
+      >
+    </div>
+  </mat-form-field>
 
-    <br />
+  <br />
 
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label for="cantor">Cantor</mat-label>
-      <input
-        matInput
-        type="text"
-        formControlName="cantor"
-        placeholder="Nome do Cantor"
-      />
-      <div *ngIf="formAdicionar.controls['cantor'].touched">
-        <small
-          *ngIf="formAdicionar.controls['cantor'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O Cantor é obrigatório!</small
-        >
-      </div>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label for="cantor">Cantor</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="cantor"
+      placeholder="Nome do Cantor"
+    />
+    <div *ngIf="formAdicionar.controls['cantor'].touched">
+      <small
+        *ngIf="formAdicionar.controls['cantor'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O Cantor é obrigatório!</small
+      >
+    </div>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label>Produtor</mat-label>
-      <input
-        matInput
-        formControlName="produtor"
-        type="text"
-        placeholder="Nome do Produtor"
-      />
-      <div *ngIf="formAdicionar.controls['produtor'].touched">
-        <small
-          *ngIf="formAdicionar.controls['produtor'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O Produtor é obrigatório!</small
-        >
-      </div>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label>Produtor</mat-label>
+    <input
+      matInput
+      formControlName="produtor"
+      type="text"
+      placeholder="Nome do Produtor"
+    />
+    <div *ngIf="formAdicionar.controls['produtor'].touched">
+      <small
+        *ngIf="formAdicionar.controls['produtor'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O Produtor é obrigatório!</small
+      >
+    </div>
+  </mat-form-field>
 
-    <br />
+  <br />
 
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label>Ano de lançamento</mat-label>
-      <input
-        type="number"
-        matInput
-        formControlName="ano"
-        placeholder="Ano do lançamento"
-      />
-      <div *ngIf="formAdicionar.controls['ano'].touched">
-        <small
-          *ngIf="formAdicionar.controls['ano'].hasError('required')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O Ano é obrigatório</small
-        >
-        <small
-          *ngIf="formAdicionar.controls['ano'].hasError('min')"
-          style="color: rgb(114, 17, 17)"
-        >
-          O Ano de lançamento precisa ter no mínimo 4 caracteres</small
-        >
-      </div>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label>Ano de lançamento</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="ano"
+      mask="0000"
+      placeholder="Ano do lançamento"
+    />
+    <div *ngIf="formAdicionar.controls['ano'].touched">
+      <small
+        *ngIf="formAdicionar.controls['ano'].hasError('required')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O Ano é obrigatório</small
+      >
+      <small
+        *ngIf="formAdicionar.controls['ano'].hasError('min')"
+        style="color: rgb(114, 17, 17)"
+      >
+        O Ano de lançamento precisa ter no mínimo 4 caracteres</small
+      >
+    </div>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label>Disponível em</mat-label>
-      <select matNativeControl formControlName="disponivel">
-        <option>Youtube</option>
-        <option>Spotify</option>
-        <option>Deezer</option>
-      </select>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label>Disponível em</mat-label>
+    <select matNativeControl formControlName="disponivel">
+      <option>Youtube</option>
+      <option>Spotify</option>
+      <option>Deezer</option>
+      <option>Outro</option>
+    </select>
+  </mat-form-field>
 
-    <br />
+  <br />
 
-    <mat-form-field appearance="outline" class="forminha">
-      <mat-label>Gênero</mat-label>
-      <select matNativeControl formControlName="genero">
-        <option>Jazz</option>
-        <option>Rock</option>
-        <option>Funk</option>
-        <option>Pop</option>
-        <option>Rap</option>
-        <option>Sertanejo</option>
-        <option>Outros</option>
-      </select>
-    </mat-form-field>
+  <mat-form-field appearance="outline" class="forminha">
+    <mat-label>Gênero</mat-label>
+    <select matNativeControl formControlName="genero">
+      <option>Jazz</option>
+      <option>Rock</option>
+      <option>Funk</option>
+      <option>Pop</option>
+      <option>Rap</option>
+      <option>Sertanejo</option>
+      <option>Outro</option>
+    </select>
+  </mat-form-field>
 
-    <button mat-raised-button type="submit" id="butao">Salvar</button>
-  </form>
-</body>
+  <div class="file-input">
+    <label id="labelFaile" for="file">Adicione uma imagem</label>
+    <input class="file" type="file" id="file" />
+  </div>
+
+  <br />
+
+  <button mat-raised-button type="submit" id="butao">Salvar</button>
+</form>

@@ -56,11 +56,11 @@ export class LoginComponent implements OnInit {
   logarComGoogleAccount() {
     this.userService.loginComGoogleAccount()
       .then(() => {
-        this.snackBar.open("Login efetuado com sucesso!")
+        this.snackBar.open("Login efetuado com sucesso!", '', {duration: 1000})
         this._router.navigate(['/listaDeMusica'])
       })
       .catch((error) => {
-        this.snackBar.open("Erro ao efetuar login, tente novamente")
+        this.snackBar.open("Erro ao efetuar login, tente novamente", )
         console.log(error)
       })
   }

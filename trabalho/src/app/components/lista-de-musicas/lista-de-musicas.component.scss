@@ -1,5 +1,4 @@
 body {
-  background-color: rgb(78, 111, 157);
   background-image: url("/assets/icon-app.png");
   background-size: 25%;
   background-repeat: no-repeat;
@@ -19,7 +18,7 @@ h1 {
 
 .cards {
   color: white;
-  max-width: 400px;
+  width: 300px;
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   margin: 4px;
@@ -52,4 +51,45 @@ th {
   width: 120px;
   background-color: rgb(147, 172, 206);
   color: white;
+}
+#botao:hover{
+  background-color: rgb(126, 161, 209);
+}
+
+.bald{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.infos{
+  font-size: 18px;
+}
+
+#title{
+  font-size: 40px;
+}
+
+#subtitle{
+  font-size: 20px;
+}
+
+#imagem{
+  border: 2px;
+  border-style: solid;
+  color:rgb(78, 111, 157)
+}
+
+#logout{
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  color: white;
+}
+
+#logout:hover{
+  color: rgb(208, 199, 199);
+}
+
+.card-button:hover{
+  color: rgb(208, 199, 199);
 }
