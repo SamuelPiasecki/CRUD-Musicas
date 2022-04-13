@@ -49,7 +49,7 @@ export class EditarMusicasComponent implements OnInit {
               genero: [musicaRef.genero, [Validators.required]],
             })
           })
-      }
+      } 
     })
   }
 

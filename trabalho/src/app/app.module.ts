@@ -24,6 +24,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogConfirmComponent } from './components/lista-de-musicas/dialog-confirm/dialog-confirm.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { LogoutConfirmComponent } from './components/lista-de-musicas/logout-confirm/logout-confirm.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     EditarMusicasComponent,
     DialogConfirmComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    LogoutConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     MatCardModule,
     MatSnackBarModule,
     MatDialogModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

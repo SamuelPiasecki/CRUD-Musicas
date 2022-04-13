@@ -1,7 +1,3 @@
-body{
-    background-color: rgb(78, 111, 157);
-}
-
 h1{
     padding-top: 3%;
     text-align: center;
@@ -27,4 +23,8 @@ button{
     background-color: rgb(147, 172, 206);
     color:white;
     width: 400px;
+}
+
+button:hover{
+    background-color: rgb(126, 161, 209);
 }
