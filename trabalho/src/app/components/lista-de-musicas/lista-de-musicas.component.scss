@@ -20,7 +20,8 @@ h1 {
   left: 4%;
   right: 5%;
   color: white;
-  width: 300px;
+  min-width: 200px;
+  letter-spacing: 1px;
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   margin: 4px;
@@ -78,13 +79,14 @@ th {
 #imagem{
   border: 2px;
   border-style: solid;
-  color:rgb(78, 111, 157)
+  color:rgb(78, 111, 157);
+  margin: 4px;
 }
 
 #logout{
   position: absolute;
   top: 5%;
-  left: 2%;
+  left: 3%;
   color: white;
 }
 
