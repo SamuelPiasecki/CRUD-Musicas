@@ -8,13 +8,13 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { UserGuard } from './services/user.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'signUp', component: SignUpComponent},
-  {path:'listaDeMusica', component: ListaDeMusicasComponent, canActivate: [UserGuard]},
-  {path:'editarMusica/:index', component: EditarMusicasComponent, canActivate: [UserGuard]},
-  {path:'criarMusica', component: CriarMusicasComponent, canActivate: [UserGuard]},
-  {path:'**', redirectTo:'/login'},
-  {path:"", redirectTo:'/login', pathMatch:"full"},
+  { path: 'login', component: LoginComponent },
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'listaDeMusica', component: ListaDeMusicasComponent, canActivate: [UserGuard] },
+  { path: 'editarMusica/:index', component: EditarMusicasComponent, canActivate: [UserGuard] },
+  { path: 'criarMusica', component: CriarMusicasComponent, canActivate: [UserGuard] },
+  { path: '**', redirectTo: '/login' },
+  { path: "", redirectTo: '/login', pathMatch: "full" },
 ];
 
 @NgModule({
